@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSignIn } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 import {
   MDBBtn,
   MDBContainer,
@@ -29,12 +30,19 @@ export default function Registration() {
       .post("http://localhost:5000/api/auth/registration", formData)
       .then((res) => {
         if (res.status === 201) {
+          const decodedToken = jwt_decode(res.data.token);
           console.log("User created!");
+
           signIn({
             token: res.data.token,
             expiresIn: 5,
             tokenType: "Bearer",
-            authState: { email: formData.email },
+            authState: {
+              id: decodedToken.id,
+              email: decodedToken.email,
+              firstName: decodedToken.firstName,
+              lastName: decodedToken.lastName,
+            },
           });
           navigate(USER_INFO_ROUTE);
         }
