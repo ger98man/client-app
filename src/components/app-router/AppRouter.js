@@ -1,19 +1,40 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { authRoutes, publicRoutes } from "../../routes";
+import { RequireAuth } from "react-auth-kit";
+import {
+  LOGIN_ROUTE,
+  REGISTRATION_ROUTE,
+  USER_INFO_ROUTE,
+  USER_LIST_ROUTE,
+} from "../../utils/constants";
+import UserInfo from "../user-info/UserInfo";
+import UserList from "../user-list/UserList";
+import Login from "../login/Login";
+import Registration from "../registration/Registration";
 
 export default function AppRouter() {
-  const isAuthenticated = false;
   return (
     <BrowserRouter>
       <Routes>
-        {isAuthenticated &&
-          authRoutes.map(({ path, Component }) => (
-            <Route key={path} path={path} Component={Component} exact></Route>
-          ))}
-        {publicRoutes.map(({ path, Component }) => (
-          <Route key={path} path={path} Component={Component} exact></Route>
-        ))}
+        <Route path={"/"} element={<Login />} />
+        <Route path={LOGIN_ROUTE} element={<Login />} />
+        <Route path={REGISTRATION_ROUTE} element={<Registration />} />
+        <Route
+          path={USER_INFO_ROUTE}
+          element={
+            <RequireAuth loginPath={LOGIN_ROUTE}>
+              <UserInfo />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path={USER_LIST_ROUTE}
+          element={
+            <RequireAuth loginPath={LOGIN_ROUTE}>
+              <UserList />
+            </RequireAuth>
+          }
+        />
         <Route
           path="*"
           element={

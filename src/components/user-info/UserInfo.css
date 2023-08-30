@@ -1,0 +1,45 @@
+.user-info {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.user-info h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.field-name {
+  font-style: bold;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-value {
+  padding: 10px 0;
+  color: #555;
+}
+
+.user-value:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .user-info {
+    padding: 15px;
+  }
+
+  .field-name,
+  .user-value {
+    padding: 8px 0;
+  }
+}

@@ -7,7 +7,7 @@ const App = () => (
     authType={"cookie"}
     authName={"_auth"}
     cookieDomain={window.location.hostname}
-    cookieSecure={window.location.protocol === "https:"}
+    cookieSecure={false}
   >
     <AppRouter />
   </AuthProvider>
