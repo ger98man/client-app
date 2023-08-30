@@ -19,7 +19,7 @@ export default function UserList() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  });
+  }, []);
 
   const addCoins = () => {
     alert("Add coins pressed");
