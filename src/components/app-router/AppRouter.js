@@ -11,6 +11,7 @@ import UserInfo from "../user-info/UserInfo";
 import UserList from "../user-list/UserList";
 import Login from "../login/Login";
 import Registration from "../registration/Registration";
+import Layout from "../layout/Layout";
 
 export default function AppRouter() {
   return (
@@ -23,7 +24,9 @@ export default function AppRouter() {
           path={USER_INFO_ROUTE}
           element={
             <RequireAuth loginPath={LOGIN_ROUTE}>
-              <UserInfo />
+              <Layout>
+                <UserInfo />
+              </Layout>
             </RequireAuth>
           }
         />
@@ -31,7 +34,9 @@ export default function AppRouter() {
           path={USER_LIST_ROUTE}
           element={
             <RequireAuth loginPath={LOGIN_ROUTE}>
-              <UserList />
+              <Layout>
+                <UserList />
+              </Layout>
             </RequireAuth>
           }
         />
