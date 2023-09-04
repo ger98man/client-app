@@ -1,31 +1,45 @@
 import React from "react";
 import { useAuthUser } from "react-auth-kit";
+import "./UserInfo.css";
 
 export default function UserInfo() {
   const user = useAuthUser();
 
   return (
-    <div className="user-info p-4 bg-light rounded shadow">
-      <h1 className="mb-4">User Information</h1>
-      <table className="user-table table table-bordered">
+    <div className="table-container">
+      <h1>User Information</h1>
+      <table className="data-table vertical">
         <tbody>
           <tr>
-            <td className="field-name">First Name</td>
-            <td className="user-value">{user().firstName}</td>
+            <th>First Name</th>
+            <td>{user().firstName}</td>
           </tr>
           <tr>
-            <td className="field-name">Last Name</td>
-            <td className="user-value">{user().lastName}</td>
+            <th>Last Name</th>
+            <td>{user().lastName}</td>
           </tr>
           <tr>
-            <td className="field-name">Email</td>
-            <td className="user-value">{user().email}</td>
+            <th>Email</th>
+            <td>{user().email}</td>
           </tr>
           <tr>
-            <td className="field-name">Total Coins</td>
-            <td className="user-value">TOTAL</td>
+            <th>Total Coins</th>
+            <td>TOTAL</td>
           </tr>
         </tbody>
+      </table>
+      <h1>Transactions</h1>
+      <table className="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>field1</th>
+            <th>field2</th>
+            <th>field3</th>
+            <th>field4</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
       </table>
     </div>
   );

@@ -27,7 +27,7 @@ export default function Registration() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/api/auth/registration", formData)
+      .post("http://localhost:4000/api/auth/registration", formData)
       .then((res) => {
         if (res.status === 201) {
           const decodedToken = jwt_decode(res.data.token);

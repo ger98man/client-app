@@ -1,43 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   MDBContainer,
   MDBNavbar,
   MDBNavbarBrand,
-  MDBNavbarToggler,
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarLink,
-  MDBCollapse,
 } from "mdb-react-ui-kit";
+import { useSignOut } from "react-auth-kit";
 
 export default function Navbar() {
-  const [showNav, setShowNav] = useState(false);
+  const signOut = useSignOut();
 
   return (
-    <MDBNavbar expand="lg" light bgColor="light">
-      <MDBContainer fluid>
-        <MDBNavbarBrand href="#">Menu</MDBNavbarBrand>
-        <MDBNavbarToggler
-          type="button"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          onClick={() => setShowNav(!showNav)}
-        ></MDBNavbarToggler>
-        <MDBCollapse navbar show={showNav}>
-          <MDBNavbarNav>
-            <MDBNavbarItem>
-              <MDBNavbarLink active aria-current="page" href="#">
-                User Info
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href="#">User List</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href="#">Sign out</MDBNavbarLink>
-            </MDBNavbarItem>
-          </MDBNavbarNav>
-        </MDBCollapse>
+    <MDBNavbar expand="lg">
+      <MDBContainer>
+        <MDBNavbarBrand>Menu</MDBNavbarBrand>
+        <MDBNavbarNav>
+          <MDBNavbarItem>
+            <MDBNavbarLink href="/user-info">User Info</MDBNavbarLink>
+          </MDBNavbarItem>
+          <MDBNavbarItem>
+            <MDBNavbarLink href="/user-list">User List</MDBNavbarLink>
+          </MDBNavbarItem>
+          <MDBNavbarItem>
+            <MDBNavbarLink onClick={() => signOut()}>Sign out</MDBNavbarLink>
+          </MDBNavbarItem>
+        </MDBNavbarNav>
       </MDBContainer>
     </MDBNavbar>
   );

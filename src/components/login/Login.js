@@ -5,6 +5,7 @@ import { useSignIn } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
 import { MDBContainer, MDBInput, MDBBtn } from "mdb-react-ui-kit";
 import { REGISTRATION_ROUTE, USER_INFO_ROUTE } from "../../utils/constants";
+import "../user-list/UserList.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function Login() {
   const onSubmitLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/auth/login", formData)
+      .post("http://localhost:4000/api/auth/login", formData)
       .then((res) => {
         if (res.status === 201) {
           const decodedToken = jwt_decode(res.data.token);
@@ -35,9 +36,8 @@ export default function Login() {
         }
       })
       .catch((e) => {
-        console.log(e);
         const errMsg = e.response?.data.message || e?.message;
-        console.log("Server response:", errMsg);
+        alert(errMsg);
       });
   };
 
@@ -62,9 +62,9 @@ export default function Login() {
         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
       />
 
-      <MDBBtn className="mb-4" onClick={onSubmitLogin}>
+      <button className="action-button" onClick={onSubmitLogin}>
         Sign in
-      </MDBBtn>
+      </button>
 
       <div className="text-center">
         <p>

@@ -8,7 +8,6 @@ export default function UserList() {
   const authHeader = useAuthHeader();
 
   useEffect(() => {
-    // Axios GET request
     axios
       .get("http://localhost:5000/api/users", {
         headers: { Authorization: authHeader() },
@@ -30,7 +29,7 @@ export default function UserList() {
 
   return (
     <div className="table-container">
-      <h2>Admin view - User table</h2>
+      <h1>Admin view - User table</h1>
       <table className="data-table">
         <thead>
           <tr>
