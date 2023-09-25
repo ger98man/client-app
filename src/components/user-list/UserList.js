@@ -9,7 +9,7 @@ export default function UserList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/users", {
+      .get("http://localhost:4000/api/users", {
         headers: { Authorization: authHeader() },
       })
       .then((response) => {
